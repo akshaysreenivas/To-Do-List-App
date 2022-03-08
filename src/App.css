@@ -85,3 +85,17 @@ h2 {
   font-style: normal;
   color: grey;
 }
+.container{
+ 
+  text-align: center;
+}
+
+h4{
+  color: white;
+}
+#finished{
+  padding-left: 15px;
+}
+.todos{
+  margin-top: 50px;
+}

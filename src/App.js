@@ -29,10 +29,11 @@ function App() {
           className="fas fa-plus"
         ></i>
       </div>
+     <div className="container"> <h4>All Tasks</h4></div>
       <div className="todos">
         {todos.map((value) => {
           return (
-            <div className="todo" key={value.id}>
+            <div id="list" className="todo " key={value.id}>
               <div className="left">
                 <input
                   value={value.status}
@@ -55,11 +56,58 @@ function App() {
                 <p>{value.text}</p>
               </div>
               <div className="right">
-                <i className="fas fa-times"></i>
+                <i
+                  className="fas fa-times"
+                  onClick={(e) => {
+                    setTodos(
+                      todos.filter((obj2) => {
+                        if (obj2.id !== value.id) {
+                          return obj2;
+                        }
+                        return null;
+                      })
+                    );
+                  }}
+                ></i>
               </div>
             </div>
           );
         })}
+        <div className="container">
+          <div className="container"><h4>Finished</h4></div>
+          
+          {todos.map((value) => {
+            if (value.status) {
+              return (
+                <div>
+                  
+                <div id='finished' className="todo" key={value.id}>
+                  <div className="left">
+                    <p>{value.text}</p>
+                  </div>
+                  <div className="right">
+                    <i
+                      className="fas fa-times"
+                      onClick={(e) => {
+                        setTodos(
+                          todos.filter((obj2) => {
+                            if (obj2.id !== value.id) {
+                              return obj2;
+                            }
+                            return null;
+                          })
+                        );
+                      }}
+                    ></i>
+                  </div>
+                </div>
+                </div>
+              );
+           
+            }
+            return null;
+          })}
+        </div>
       </div>
     </div>
   );
