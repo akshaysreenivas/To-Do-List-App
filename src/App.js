@@ -4,8 +4,7 @@ import { useState } from "react";
 function App() {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState("");
- 
-  
+
   return (
     <div className="app">
       <div className="mainHeading">
@@ -35,23 +34,29 @@ function App() {
           return (
             <div className="todo" key={value.id}>
               <div className="left">
-                <input value={value.status} onChange={(e)=>{
-                  console.log(e.target.checked);
-                setTodos(todos.filter(val=>{
-                 if(val.id===value.id){
-                   val.status=e.target.checked
-                   console.log(val);
-                 }return val
-                }))
-              }
-                
-                }type="checkbox" name="" id="cb" />
+                <input
+                  value={value.status}
+                  onChange={(e) => {
+                    console.log(e.target.checked);
+                    setTodos(
+                      todos.filter((val) => {
+                        if (val.id === value.id) {
+                          val.status = e.target.checked;
+                          console.log(val);
+                        }
+                        return val;
+                      })
+                    );
+                  }}
+                  type="checkbox"
+                  name=""
+                  id="cb"
+                />
                 <p>{value.text}</p>
               </div>
               <div className="right">
                 <i className="fas fa-times"></i>
               </div>
-              
             </div>
           );
         })}
